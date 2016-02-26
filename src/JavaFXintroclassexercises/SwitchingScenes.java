@@ -50,8 +50,12 @@ public class SwitchingScenes extends Application{
 
         btn1.setOnAction(event -> {
             nameLabel.setText("Hello " + txtField.getText());
-            readFromFile(txtField.getText(), txtPassword.getText());
-            primaryStage.setScene(scene2);
+
+            if(readFromFile(txtField.getText(), txtPassword.getText())){
+                primaryStage.setScene(scene2);
+            } else {
+                txtField.setText("Wrong");
+            }
         });
 
         btn2.setOnAction(event -> {
@@ -63,6 +67,8 @@ public class SwitchingScenes extends Application{
 
     private Boolean readFromFile(String user, String pass){
 
+        Boolean confirmedUser = false;
+
         try{
             File file = new File("userFile.txt");
             Scanner scanner = new Scanner(file);
@@ -73,10 +79,13 @@ public class SwitchingScenes extends Application{
             System.out.println(realUser);
             System.out.println(realPass);
 
+            if(realUser.equals(user) && realPass.equals(pass)) {
+                confirmedUser = true;
+            }
+
         }catch (Exception e){
             e.printStackTrace();
         }
-        Boolean confirmedUser = false;
 
         return confirmedUser;
     }

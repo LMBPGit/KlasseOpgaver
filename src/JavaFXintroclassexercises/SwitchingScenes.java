@@ -10,6 +10,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.Scanner;
+
 public class SwitchingScenes extends Application{
 
     public static void main(String[] args) {
@@ -45,6 +50,7 @@ public class SwitchingScenes extends Application{
 
         btn1.setOnAction(event -> {
             nameLabel.setText("Hello " + txtField.getText());
+            readFromFile(txtField.getText(), txtPassword.getText());
             primaryStage.setScene(scene2);
         });
 
@@ -53,5 +59,25 @@ public class SwitchingScenes extends Application{
         });
         primaryStage.setScene(scene1);
         primaryStage.show();
+    }
+
+    private Boolean readFromFile(String user, String pass){
+
+        try{
+            File file = new File("userFile.txt");
+            Scanner scanner = new Scanner(file);
+
+            String realUser = scanner.nextLine();
+            String realPass = scanner.nextLine();
+
+            System.out.println(realUser);
+            System.out.println(realPass);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        Boolean confirmedUser = false;
+
+        return confirmedUser;
     }
 }

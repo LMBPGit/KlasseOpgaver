@@ -19,16 +19,18 @@ public class SwitchingScenes extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        double x = 300;
+        double x = 450;
         double y = 100;
 
         Label nameLabel = new Label();
         TextField txtField = new TextField();
         txtField.setPromptText("Insert Name Here");
+        TextField txtPassword = new TextField();
+        txtPassword.setPromptText("Password");
         Button btn1 = new Button("Go");
         Button btn2 = new Button("Go to login screen");
 
-        HBox hbox1 = new HBox(txtField, btn1);
+        HBox hbox1 = new HBox(txtField, txtPassword, btn1);
         hbox1.setPrefSize(x, y);
         hbox1.setPadding(new Insets(20, 20, 20, 20));
         hbox1.setSpacing(20);
